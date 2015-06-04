@@ -136,6 +136,9 @@ program iobench_hdf5
   !############################################################
   ! HDF5 write
 
+  call cpu_time(t1)
+  call date_and_time(values=ut1)
+
   CALL h5open_f(error)
 
   ! Create a new file using default properties.
@@ -147,21 +150,8 @@ program iobench_hdf5
   ! Create the dataset with default properties.
   CALL h5dcreate_f(file_id, "matrixa", H5T_NATIVE_DOUBLE, dataspace_id, dataset_id, error)
 
-  call cpu_time(t1)
-  call date_and_time(values=ut1)
-
   ! Write the dataset.
   CALL h5dwrite_f(dataset_id, H5T_NATIVE_DOUBLE, a, dims, error)
-
-  call cpu_time(t2)
-  call date_and_time(values=ut2)
-  etime=(ut2(5)*3600._dp+ut2(6)*60._dp+real(ut2(7),kind=dp)+ut2(8)/1000._dp)-(ut1(5)*3600._dp+ut1(6)*60._dp+real(ut1(7),kind=dp)+ut1(8)/1000._dp)
-
-  write(*,*)
-  write(*,'(a)')        "HDF5"
-  write(*,'(a,f12.3,a)') "Speed        ", size(a)*8/1048576._dp/etime, " MB/s"
-  write(*,'(a,f12.3,a)') "CPU time     ", t2-t1, " s"
-  write(*,'(a,f12.3,a)') "Elapsed time ", etime, " s"
 
   ! End access to the dataset and release resources used by it.
   CALL h5dclose_f(dataset_id, error)
@@ -174,6 +164,16 @@ program iobench_hdf5
 
   ! Close FORTRAN interface.
   CALL h5close_f(error)
+
+  call cpu_time(t2)
+  call date_and_time(values=ut2)
+  etime=(ut2(5)*3600._dp+ut2(6)*60._dp+real(ut2(7),kind=dp)+ut2(8)/1000._dp)-(ut1(5)*3600._dp+ut1(6)*60._dp+real(ut1(7),kind=dp)+ut1(8)/1000._dp)
+
+  write(*,*)
+  write(*,'(a)')        "HDF5"
+  write(*,'(a,f12.3,a)') "Speed        ", size(a)*8/1048576._dp/etime, " MB/s"
+  write(*,'(a,f12.3,a)') "CPU time     ", t2-t1, " s"
+  write(*,'(a,f12.3,a)') "Elapsed time ", etime, " s"
 
   !############################################################
   deallocate(buf)
