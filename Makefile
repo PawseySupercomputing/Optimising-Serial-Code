@@ -32,5 +32,5 @@ game_of_life: game_of_life.f90
 
 
 clean:
-	rm -f $(MATRICES) iobench iobench_hdf5 game_of_life
+	rm -f $(MATRICES) iobench iobench_hdf5 game_of_life *pat*.xf *pat*.apa *pat*.ap2 *+pat
 
