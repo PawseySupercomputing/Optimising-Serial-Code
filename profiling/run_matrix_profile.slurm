@@ -1,9 +1,11 @@
 #!/bin/bash -l
 #SBATCH --nodes=1
-#SBATCH --account=courseq
+#SBATCH --reservation=courseq
+#SBATCH --account=courses01
 #SBATCH --job-name=matrices
 #SBATCH --time=00:10:00
 #SBATCH --export=NONE
 
-aprun -n 1 iobench_hdf5
+aprun -n 1 matrix+pat
+#aprun -n 1 matrix+apa
 

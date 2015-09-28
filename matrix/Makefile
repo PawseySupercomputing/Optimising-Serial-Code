@@ -21,16 +21,6 @@ matrix.O2 : matrix.f90
 matrix.O3 : matrix.f90
 	$(FC) -O3 -o $@ $<
 
-iobench: iobench.f90
-	$(FC) $(FFLAGS) -o $@ $<
-
-iobench_hdf5: iobench_hdf5.f90
-	$(FC) $(FFLAGS) -o $@ $<
-
-game_of_life: game_of_life.f90
-	$(FC) $(FFLAGS) -o $@ $<
-
-
 clean:
-	rm -f $(MATRICES) iobench iobench_hdf5 game_of_life *pat*.xf *pat*.apa *pat*.ap2 *+pat
+	rm -f *.mod *.o $(MATRICES) 
 
