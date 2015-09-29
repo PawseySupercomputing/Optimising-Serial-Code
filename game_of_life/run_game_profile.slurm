@@ -1,7 +1,8 @@
 #!/bin/bash -l
 #SBATCH --nodes=1
-#SBATCH --account=courseq
-#SBATCH --job-name=matrices
+#SBATCH --reservation=courseq
+#SBATCH --account=courses01
+#SBATCH --job-name=game_of_life
 #SBATCH --time=00:10:00
 #SBATCH --export=NONE
 
