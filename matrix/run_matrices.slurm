@@ -7,14 +7,14 @@
 #SBATCH --export=NONE
 
 echo matrices.O0
-aprun -n 1 matrix.O0
+srun --export=all -n 1 matrix.O0
 
 echo matrix.O1
-aprun -n 1 matrix.O1
+srun --export=all -n 1 matrix.O1
 
 echo matrix.O2
-aprun -n 1 matrix.O2
+srun --export=all -n 1 matrix.O2
 
 echo matrix.O3
-aprun -n 1 matrix.O3
+srun --export=all -n 1 matrix.O3
 

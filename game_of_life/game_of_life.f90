@@ -8,7 +8,7 @@
 program life
   
   implicit none
-  integer, parameter :: ni=200, nj=200, nsteps = 500
+  integer, parameter :: ni=250, nj=250, nsteps = 10000
   integer :: i, j, n, im, ip, jm, jp, nsum, isum
   integer, allocatable, dimension(:,:) :: old, new
   real :: arand
