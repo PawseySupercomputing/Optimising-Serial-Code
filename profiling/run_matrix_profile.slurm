@@ -6,8 +6,14 @@
 #SBATCH --time=00:10:00
 #SBATCH --export=NONE
 
+module load perftools
+
 export PAT_RT_PERFCTR=1
 export PAT_RT_SAMPLING_INTERVAL=1000
-srun --export=all -n 1 matrix+pat
-#srun --export=all -n 1 matrix+apa
+optLevel='.O0'
+#optLevel=''
+expType=pat
+#expType=apa
+srun --export=all -n 1 matrix${optLevel}+${expType}
+
 

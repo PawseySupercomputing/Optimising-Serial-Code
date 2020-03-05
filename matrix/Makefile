@@ -3,7 +3,7 @@ FC := ftn
 CC := cc
 
 #FFLAGS := -g
-FFLAGS := -O3
+#FFLAGS := -O3
 
 MATRICES = matrix.O0 matrix.O1 matrix.O2 matrix.O3
 
@@ -22,5 +22,4 @@ matrix.O3 : matrix.f90
 	$(FC) -O3 -o $@ $<
 
 clean:
-	rm -f *.mod *.o $(MATRICES) 
-
+	rm -f *.mod *.o $(MATRICES)
